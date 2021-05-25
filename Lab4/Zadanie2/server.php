@@ -2,13 +2,13 @@
 	#===================================================================
 	function getTime( $data ) {
 		
+		$hex = dechex($data);
+		
 		#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 		$stderr = fopen('php://stderr', 'w');
-		fwrite( $stderr, "Client: $data\n" );
+		fwrite( $stderr, "Client: $hex\n" );
 		
-		echo dechex($data);
-		
-		return $data;
+		return $hex;
 	}
 	
 	$server = new SoapServer("example.wsdl");
