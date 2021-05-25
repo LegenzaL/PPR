@@ -1,0 +1,43 @@
+<?xml version ='1.0' encoding ='UTF-8' ?>
+
+<definitions name='Example' 
+	targetNamespace='http://localhost/example.wsdl' 
+	xmlns:tns='http://localhost/example.wsdl' 
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+	xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+	<message name='getTimeRequest'> 
+		<part name='Data' type='xsd:string'/> 
+	</message> 
+	<message name='getTimeResponse'> 
+		<part name='Data' type='xsd:string'/> 
+	</message> 
+
+	<portType name='ExamplePortType'> 
+	  <operation name='getTime'>
+		<input message='tns:getTimeRequest'/> 
+		<output message='tns:getTimeResponse'/>   
+	  </operation>    
+	</portType> 
+
+	<binding name='ExampleBinding' type='tns:ExamplePortType'> 
+	  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+	  <operation name='getTime'> 
+		<soap:operation soapAction='getTime'/> 
+		<input> 
+		  <soap:body use='encoded' namespace='urn:localhost-example' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+		</input> 
+		<output> 
+		  <soap:body use='encoded' namespace='urn:localhost-example' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+		</output> 
+	  </operation>       
+	</binding> 
+
+	<service name='ExampleService'> 
+	  <port name='ExamplePort' binding='ExampleBinding'> 
+		<soap:address location='http://localhost'/> 
+	  </port> 
+	</service>
+</definitions>
