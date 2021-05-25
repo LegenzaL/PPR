@@ -4,11 +4,11 @@
 		
 		#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 		$stderr = fopen('php://stderr', 'w');
-		fwrite( $stderr, "Client: $data\n" );
+		fwrite( $stderr, "Client: $data[0], $data[1]\n" );
 		
-		echo dechex($data);
+		$suma = $data[0] + $data[1];
 		
-		return $data;
+		return $suma;
 	}
 	
 	$server = new SoapServer("example.wsdl");
