@@ -6,9 +6,9 @@
 		$stderr = fopen('php://stderr', 'w');
 		fwrite( $stderr, "Client: $data\n" );
 		
-		$suma = $data[0] + $data[1];
+		echo dechex($data);
 		
-		return $suma;
+		return $data;
 	}
 	
 	$server = new SoapServer("example.wsdl");
